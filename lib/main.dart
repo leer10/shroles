@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hitlerrolechooserflutter/hitlerrolechooser.dart';
 import 'package:provider/provider.dart';
 import 'package:hitlerrolechooserflutter/addplayerscreen.dart';
+import 'package:hitlerrolechooserflutter/playerlistscreen.dart';
 
 void main() => runApp(ChangeNotifierProvider(builder: (context) => GameState(), child: MyApp()));
 
