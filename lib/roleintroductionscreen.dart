@@ -25,3 +25,11 @@ class RoleIntroductionScreen extends StatelessWidget {
     );
   }
 }
+
+class RevealedList with ChangeNotifier {
+  List<Player> revealedList;
+void addPlayer(Player player){
+  //add it
+  notifyListeners();
+}
+}
