@@ -12,7 +12,7 @@ class PlayerListScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/addplayer');
+          Navigator.pushNamed(context, '/playerlist/addplayer');
         },
         child: Icon(Icons.add),
         //backgroundColor: Colors.redAccent,

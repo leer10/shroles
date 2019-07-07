@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => WelcomeScreen(),
         '/playerlist': (context) => PlayerListScreen(),
-        '/addplayer': (context) => AddPlayerScreen(),
+        '/playerlist/addplayer': (context) => AddPlayerScreen(),
         '/roleintroduction': (context) => RoleIntroductionScreen(),
       }
     );
