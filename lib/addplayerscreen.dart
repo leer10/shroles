@@ -43,6 +43,12 @@ class PlayerFormState extends State<PlayerForm>{
           TextFormField(
             autofocus: true,
             controller: _myController,
+            textCapitalization: TextCapitalization.words,
+            onFieldSubmitted: (term) {
+            if (_formKey.currentState.validate()) {print("Player ${_myController.text} added");
+            Provider.of<GameState>(context).addPlayer(_myController.text);
+            Navigator.pop(context);}
+            },
             validator: (value) {
               if (value.isEmpty) {return 'Enter a name';}
               if (Provider.of<GameState>(context).game.containsPlayer(value)) {return 'Can\'t have duplicate players';}
@@ -55,9 +61,6 @@ class PlayerFormState extends State<PlayerForm>{
                 print("Player ${_myController.text} added");
                 Provider.of<GameState>(context).addPlayer(_myController.text);
                 Navigator.pop(context);
-                Scaffold
-                .of(context)
-                .showSnackBar(SnackBar(content: Text("Added Player!")));
               }
             },
             child: Text("Add"),
