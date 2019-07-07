@@ -10,7 +10,12 @@ class RoundScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Main Menu"),
       ),
-      body: Center(child: Text("Placeholder"))
+      body: Center(child: Column(
+        children: <Widget>[
+          RaisedButton(child: Text("Introduce Players"), onPressed: (){Navigator.pushNamed(context, '/roundscreen/roleintroduction');}),
+          RaisedButton(child: Text("Perform Loyalty Check"), onPressed: (Provider.of<GameState>(context).introduced) ? (){print("hey!");} : null ),
+        ],
+      ))
     );
   }
 }

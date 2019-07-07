@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
 
 class GameState with ChangeNotifier {
   Game game = Game();
+  bool _introduced = false;
 void addPlayer(String name, [Role role]){
   game.addPlayer(name, role);
   notifyListeners();
@@ -48,6 +49,13 @@ void deletePlayer(Player player){
   game.deletePlayer(player);
   notifyListeners();
 }
+
+bool get introduced => _introduced;
+void introduce() {
+  _introduced = true;
+  notifyListeners();
+}
+
 GameState(){
   addPlayer("Brandon");
   addPlayer("Mike");
