@@ -37,35 +37,38 @@ class PlayerFormState extends State<PlayerForm>{
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          TextFormField(
-            autofocus: true,
-            controller: _myController,
-            textCapitalization: TextCapitalization.words,
-            onFieldSubmitted: (term) {
-            if (_formKey.currentState.validate()) {print("Player ${_myController.text} added");
-            Provider.of<GameState>(context).addPlayer(_myController.text);
-            Navigator.pop(context);}
-            },
-            validator: (value) {
-              if (value.isEmpty) {return 'Enter a name';}
-              if (Provider.of<GameState>(context).game.containsPlayer(value)) {return 'Can\'t have duplicate players';}
-              return null;
-            }
-          ),
-          RaisedButton(
-            onPressed: (){
-              if (_formKey.currentState.validate()) {
-                print("Player ${_myController.text} added");
-                Provider.of<GameState>(context).addPlayer(_myController.text);
-                Navigator.pop(context);
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            TextFormField(
+              autofocus: true,
+              controller: _myController,
+              textCapitalization: TextCapitalization.words,
+              onFieldSubmitted: (term) {
+              if (_formKey.currentState.validate()) {print("Player ${_myController.text} added");
+              Provider.of<GameState>(context).addPlayer(_myController.text);
+              Navigator.pop(context);}
+              },
+              validator: (value) {
+                if (value.isEmpty) {return 'Enter a name';}
+                if (Provider.of<GameState>(context).game.containsPlayer(value)) {return 'Can\'t have duplicate players';}
+                return null;
               }
-            },
-            child: Text("Add"),
-          ),
-        ],
+            ),
+            RaisedButton(
+              onPressed: (){
+                if (_formKey.currentState.validate()) {
+                  print("Player ${_myController.text} added");
+                  Provider.of<GameState>(context).addPlayer(_myController.text);
+                  Navigator.pop(context);
+                }
+              },
+              child: Text("Add"),
+            ),
+          ],
+        ),
       )
     );
   }

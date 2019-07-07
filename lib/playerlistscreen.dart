@@ -11,28 +11,39 @@ class PlayerListScreen extends StatelessWidget {
         title: Text("Player List"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){Navigator.pushNamed(context, '/addplayer');},
+        onPressed: () {
+          Navigator.pushNamed(context, '/addplayer');
+        },
         child: Icon(Icons.add),
         //backgroundColor: Colors.redAccent,
-      ) ,
+      ),
       body: Material(
         child: Column(
           children: <Widget>[
             PlayerNumberWidget(),
             Expanded(
               child: ListView.builder(
-                itemCount: Provider.of<GameState>(context).game.PlayerList.length,
-                itemBuilder: (context, index) {
-                  return Dismissible(
-                    background: Container(color: Colors.red),
-                    key: Key(Provider.of<GameState>(context).game.PlayerList[index].name),
-                    onDismissed: (direction) {
-                      Provider.of<GameState>(context).deletePlayer(Provider.of<GameState>(context).game.PlayerList[index]);
-                      //print(Provider.of<GameState>(context).game.PlayerList);
-                    },
-                    child: Card(child: ListTile(title: Text("${index+1}. ${Provider.of<GameState>(context).game.PlayerList[index].name}"))));
-                }
-              ),
+                  itemCount:
+                      Provider.of<GameState>(context).game.PlayerList.length,
+                  itemBuilder: (context, index) {
+                    return Dismissible(
+                        background: Container(color: Colors.red),
+                        key: Key(Provider.of<GameState>(context)
+                            .game
+                            .PlayerList[index]
+                            .name),
+                        onDismissed: (direction) {
+                          Provider.of<GameState>(context).deletePlayer(
+                              Provider.of<GameState>(context)
+                                  .game
+                                  .PlayerList[index]);
+                          //print(Provider.of<GameState>(context).game.PlayerList);
+                        },
+                        child: Card(
+                            child: ListTile(
+                                title: Text(
+                                    "${index + 1}. ${Provider.of<GameState>(context).game.PlayerList[index].name}"))));
+                  }),
             ),
           ],
         ),
@@ -41,7 +52,7 @@ class PlayerListScreen extends StatelessWidget {
   }
 }
 
-class PlayerNumberWidget extends StatelessWidget{
+class PlayerNumberWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MaterialAccentColor backgroundColor;
@@ -54,11 +65,26 @@ class PlayerNumberWidget extends StatelessWidget{
       if (Provider.of<GameState>(context).game.PlayerList.length > 10) {
         text = "Too many players!";
       }
-      return Card(color: backgroundColor, child: ListTile(title: Text(text, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold))), );
-    }
-    else {
+      return Card(
+        color: backgroundColor,
+        child: ListTile(
+            title: Text(text,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold))),
+      );
+    } else {
       //return Icon(Icons.sentiment_satisfied);
-      return Card(color: Colors.green, child: InkWell(onTap: () {print("pressed!");}, child: ListTile(title: Text("Ready to Play!", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold)))), );
+      return Card(
+        color: Colors.green,
+        child: InkWell(
+            onTap: () {
+              print("pressed!");
+            },
+            child: ListTile(
+                title: Text("Ready to Play!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold)))),
+      );
     }
   }
 }
