@@ -79,7 +79,7 @@ class PlayerNumberWidget extends StatelessWidget {
         child: InkWell(
             onTap: () {
               //print("pressed!");
-              Navigator.pushNamed(context, '/roleintroduction');
+              Navigator.pushNamedAndRemoveUntil(context, '/roundscreen', (_) => false);
             },
             child: ListTile(
                 title: Text("Ready to Play!",

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:hitlerrolechooserflutter/addplayerscreen.dart';
 import 'package:hitlerrolechooserflutter/playerlistscreen.dart';
 import 'package:hitlerrolechooserflutter/roleintroductionscreen.dart';
+import 'package:hitlerrolechooserflutter/roundscreen.dart';
 
 void main() => runApp(ChangeNotifierProvider(builder: (context) => GameState(), child: MyApp()));
 
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => WelcomeScreen(),
         '/playerlist': (context) => PlayerListScreen(),
         '/playerlist/addplayer': (context) => AddPlayerScreen(),
-        '/roleintroduction': (context) => RoleIntroductionScreen(),
+        '/roundscreen/roleintroduction': (context) => RoleIntroductionScreen(),
+        '/roundscreen': (context) => RoundScreen(),
       }
     );
   }
@@ -47,11 +49,11 @@ void deletePlayer(Player player){
   notifyListeners();
 }
 GameState(){
-//  addPlayer("Brandon");
-//  addPlayer("Mike");
-//  addPlayer("Evan");
-//  addPlayer("Enrico");
-//  addPlayer("Becca");
+  addPlayer("Brandon");
+  addPlayer("Mike");
+  addPlayer("Evan");
+  addPlayer("Enrico");
+  addPlayer("Becca");
 }
 }
 
