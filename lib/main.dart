@@ -3,6 +3,7 @@ import 'package:hitlerrolechooserflutter/hitlerrolechooser.dart';
 import 'package:provider/provider.dart';
 import 'package:hitlerrolechooserflutter/addplayerscreen.dart';
 import 'package:hitlerrolechooserflutter/playerlistscreen.dart';
+import 'package:hitlerrolechooserflutter/roleintroductionscreen.dart';
 
 void main() => runApp(ChangeNotifierProvider(builder: (context) => GameState(), child: MyApp()));
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => WelcomeScreen(),
         '/playerlist': (context) => PlayerListScreen(),
         '/addplayer': (context) => AddPlayerScreen(),
+        '/roleintroduction': (context) => RoleIntroductionScreen(),
       }
     );
   }

@@ -78,7 +78,8 @@ class PlayerNumberWidget extends StatelessWidget {
         color: Colors.green,
         child: InkWell(
             onTap: () {
-              print("pressed!");
+              //print("pressed!");
+              Navigator.pushNamed(context, '/roleintroduction');
             },
             child: ListTile(
                 title: Text("Ready to Play!",
