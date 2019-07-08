@@ -31,7 +31,7 @@ class RoleIntroductionScreen extends StatelessWidget {
                             .game
                             .PlayerList[index]
                             .spoiled)
-                        ? () {
+                        ? () async {
                             print("added");
 
                             Future<void> _presentRole() async {
@@ -91,7 +91,7 @@ class RoleIntroductionScreen extends StatelessWidget {
                                   });
                             }
 
-                            _presentRole();
+                            await _presentRole();
                             Provider.of<GameState>(context).introducePlayer(
                                 Provider.of<GameState>(context)
                                     .game
