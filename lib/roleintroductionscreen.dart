@@ -30,6 +30,46 @@ class RoleIntroductionScreen extends StatelessWidget {
                     onPressed: (!Provider.of<GameState>(context).game.PlayerList[index].spoiled)
                         ? () {
                           print("added");
+
+                          Future<void> _presentRole() async{
+                            return showDialog<void>(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("${Provider.of<GameState>(context)
+                                      .game
+                                      .PlayerList[index].name}"),
+                                  content: SingleChildScrollView(
+                                    child: ListBody(
+                                      children: <Widget>[
+                                        if(Provider.of<GameState>(context)
+                                            .game
+                                            .PlayerList[index].role == Role.fascist)
+                                            Text("You're a fascist."),
+                                        if(Provider.of<GameState>(context).game.PlayerList[index].role == Role.hitler)
+                                        Text("You're Hitler."),
+                                        if(Provider.of<GameState>(context)
+                                            .game
+                                            .PlayerList[index].isLiberal)
+                                            Text("You're a liberal."),
+                                        if(Provider.of<GameState>(context).game.viewOthers(Provider.of<GameState>(context).game.PlayerList[index]) != null)for (Player player in Provider.of<GameState>(context).game.viewOthers(Provider.of<GameState>(context).game.PlayerList[index])) Text("${player.name} is ${player.roleString}.")
+                                      ]
+                                    )
+                                  ),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text('OK'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      }
+                                    )
+                                  ]
+                                );
+                              }
+                            );
+                          }
+                          _presentRole();
                             Provider.of<GameState>(context).introducePlayer(Provider.of<GameState>(context).game.PlayerList[index]);
                           }
                         : null

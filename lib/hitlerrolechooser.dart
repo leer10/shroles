@@ -16,6 +16,10 @@ main() {
   print(game.FascistList);
   printplayersandroles(game);
   print("The Hitler is: ${game.hitler}");
+  print("The first player, ${game.PlayerList[0].name}, can see these people:");
+  if (game.PlayerList[0].isFascist){
+  game.viewOthers(game.PlayerList[0]).forEach((player) => print("${player.name} as a ${player.roleString}"));}
+  else {print("Nobody");}
 }
 
 void printplayersandroles(Game game) {
@@ -51,6 +55,20 @@ class Game {
     return PlayerList.where((player) => player.isLiberal == true).toList();
   }
 
+  List<Player> viewOthers (Player player) {
+    List<Player> _viewList;
+    if (player.isFascist) {
+      _viewList = FascistList.where((_aPlayer) => _aPlayer != player).toList();
+      if (okayToKnowHitler == false){
+        //_viewList.removeWhere((player) => player.role == Role.hitler); //haha
+        // misunderstood the mechanics
+        if (player.role == Role.hitler){
+          _viewList.clear();
+        }
+      }
+    }
+    return _viewList;
+  }
   List<Player> get FascistList {
     return PlayerList.where((player) => player.isFascist == true).toList();
   }
