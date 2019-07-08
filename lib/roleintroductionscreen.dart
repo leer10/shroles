@@ -96,6 +96,12 @@ class RoleIntroductionScreen extends StatelessWidget {
                                 Provider.of<GameState>(context)
                                     .game
                                     .PlayerList[index]);
+                            if (Provider.of<GameState>(context).introduced == true) {
+                              Scaffold.of(context).showSnackBar(SnackBar(content: Text("Everyone's in!"), backgroundColor: Colors.green,action: SnackBarAction(
+                                label: "Back to the Menu", textColor: Colors.white,
+                                onPressed: () {Navigator.popUntil(context, ModalRoute.withName("/roundscreen"));}
+                              )));
+                            }
                           }
                         : null),
               );
