@@ -11,7 +11,7 @@ class RoleIntroductionScreen extends StatelessWidget {
           title: Text("Player Introduction"),
         ),
         body: ChangeNotifierProvider(
-          builder: (context) => RevealedList(),
+          builder: (context) => RevealedList(Provider.of<GameState>(context).game.PlayerList.length, context),
           child: GridView.builder(
               itemCount: Provider.of<GameState>(context).game.PlayerList.length,
               gridDelegate:
@@ -49,13 +49,15 @@ class RoleIntroductionScreen extends StatelessWidget {
 }
 
 class RevealedList with ChangeNotifier {
+  int playerAmount;
+  BuildContext context;
   List<Player> revealedList = [];
+  RevealedList(this.playerAmount, this.context);
   void addPlayer(Player player) {
     revealedList.add(player);
-  // AALKJ:DSJFKS HOW TO REFERENCE OTHER SSTATE  
-  //  if (revealedList.length == Provider.of<GameState>(context)
-  //      .game
-  //      .PlayerList.length)
+    if (revealedList.length == playerAmount) {
+      Provider.of<GameState>(context).introduce();
+    }
     notifyListeners();
   }
 }
