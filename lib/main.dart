@@ -64,11 +64,11 @@ void introducePlayer(Player player){
 }
 
 GameState(){
-  addPlayer("Brandon");
-  addPlayer("Mike");
-  addPlayer("Evan");
-  addPlayer("Enrico");
-  addPlayer("Becca");
+  //addPlayer("Brandon");
+  //addPlayer("Mike");
+  //addPlayer("Evan");
+  //addPlayer("Enrico");
+  //addPlayer("Becca");
 }
 }
 
