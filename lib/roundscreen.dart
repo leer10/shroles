@@ -18,13 +18,30 @@ class RoundScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/roundscreen/roleintroduction');
                 }),
-            RaisedButton(
-                child: Text("Perform Loyalty Check"),
-                onPressed: (Provider.of<GameState>(context).introduced)
-                    ? () {
-                        print("hey!");
-                      }
-                    : null),
+            Builder(builder: (BuildContext context) {
+              return RaisedButton(
+                  child: Text("Perform Loyalty Check"),
+                  onPressed: (Provider.of<GameState>(context).introduced)
+                      ? () {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text("Not implemented yet"),
+                            duration: Duration(seconds: 2),
+                          ));
+                        }
+                      : null);
+            }),
+            Builder(builder: (BuildContext context) {
+              return RaisedButton(
+                  child: Text("Show all Players with Roles"),
+                  onPressed: (Provider.of<GameState>(context).introduced)
+                      ? () {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text("Not implemented yet"),
+                            duration: Duration(seconds: 2),
+                          ));
+                        }
+                      : null);
+            }),
           ],
         )));
   }
