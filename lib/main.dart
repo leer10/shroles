@@ -55,6 +55,13 @@ void introduce() {
   _introduced = true;
   notifyListeners();
 }
+void introducePlayer(Player player){
+  player.spoiled = true;
+  if (game.PlayerList.every((aPlayer) => aPlayer.spoiled == true)) {
+    _introduced = true;
+  }
+  notifyListeners();
+}
 
 GameState(){
   addPlayer("Brandon");

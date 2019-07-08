@@ -134,6 +134,7 @@ class Player {
   Player(String name, [Role role]) {
     this.name = name;
     this.role = role;
+    this.spoiled = false;
   }
   bool get isFascist {
     switch (this.role) {
