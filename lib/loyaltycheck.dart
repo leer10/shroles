@@ -10,62 +10,66 @@ class LoyaltyCheckScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Loyalty Check"),
         ),
-        body: GridView.builder(
-            itemCount: Provider.of<GameState>(context).game.PlayerList.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                    child: Text(
-                      Provider.of<GameState>(context)
-                          .game
-                          .PlayerList[index]
-                          .name,
-                      style: TextStyle(fontSize: 32),
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.fade,
-                    ),
-                    onPressed: () async {
-                            print("added");
+        body: OrientationBuilder(
+          builder: (context, orientation) {
+            return GridView.builder(
+                itemCount: Provider.of<GameState>(context).game.PlayerList.length,
+                gridDelegate:
+                    (orientation == Orientation.portrait) ? SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2) : SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                        child: Text(
+                          Provider.of<GameState>(context)
+                              .game
+                              .PlayerList[index]
+                              .name,
+                          style: TextStyle(fontSize: 32),
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.fade,
+                        ),
+                        onPressed: () async {
+                                print("added");
 
-                            Future<void> _presentRole() async {
-                              return showDialog<void>(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                        title: Text(
-                                            "${Provider.of<GameState>(context).game.PlayerList[index].name}'s Loyalty:"),
-                                        content: SingleChildScrollView(
-                                            child: ListBody(children: <Widget>[
-                                          if (Provider.of<GameState>(context)
+                                Future<void> _presentRole() async {
+                                  return showDialog<void>(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                            title: Text(
+                                                "${Provider.of<GameState>(context).game.PlayerList[index].name}'s Loyalty:"),
+                                            content: SingleChildScrollView(
+                                                child: ListBody(children: <Widget>[
+                                              if (Provider.of<GameState>(context)
+                                                      .game
+                                                      .PlayerList[index]
+                                                      .isFascist)
+                                                Text("Fascist"),
+                                              if (Provider.of<GameState>(context)
                                                   .game
                                                   .PlayerList[index]
-                                                  .isFascist)
-                                            Text("Fascist"),
-                                          if (Provider.of<GameState>(context)
-                                              .game
-                                              .PlayerList[index]
-                                              .isLiberal)
-                                            Text("Liberal"),
-                                        ])),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                              child: Text('OK'),
-                                              onPressed: () {
-                                                //Navigator.of(context).popAndPushNamed('/roundscreen');
-                                                Navigator.of(context).popUntil(ModalRoute.withName('/roundscreen'));
-                                              })
-                                        ]);
-                                  });
-                            }
+                                                  .isLiberal)
+                                                Text("Liberal"),
+                                            ])),
+                                            actions: <Widget>[
+                                              FlatButton(
+                                                  child: Text('OK'),
+                                                  onPressed: () {
+                                                    //Navigator.of(context).popAndPushNamed('/roundscreen');
+                                                    Navigator.of(context).popUntil(ModalRoute.withName('/roundscreen'));
+                                                  })
+                                            ]);
+                                      });
+                                }
 
-                            await _presentRole();
-                          }
-                        ),
-              );
-            }));
+                                await _presentRole();
+                              }
+                            ),
+                  );
+                });
+          }
+        ));
   }
 }
