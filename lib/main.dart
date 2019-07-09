@@ -68,13 +68,13 @@ void introducePlayer(Player player){
 }
 
 GameState(){
-  addPlayer("Brandon");
-  addPlayer("Mike");
-  addPlayer("Evan");
-  addPlayer("Enrico");
-  addPlayer("Becca");
-  addPlayer("Frank");
-  addPlayer("Elijah");
+//  addPlayer("Brandon");
+//  addPlayer("Mike");
+//  addPlayer("Evan");
+//  addPlayer("Enrico");
+//  addPlayer("Becca");
+//  addPlayer("Frank");
+//  addPlayer("Elijah");
 }
 }
 
