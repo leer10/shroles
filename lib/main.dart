@@ -63,18 +63,20 @@ void introducePlayer(Player player){
   player.spoiled = true;
   if (game.PlayerList.every((aPlayer) => aPlayer.spoiled == true)) {
     _introduced = true;
+    notifyListeners();
   }
-  notifyListeners();
 }
 
 GameState(){
-//  addPlayer("Brandon");
-//  addPlayer("Mike");
-//  addPlayer("Evan");
-//  addPlayer("Enrico");
-//  addPlayer("Becca");
-//  addPlayer("Frank");
-//  addPlayer("Elijah");
+const conveniencePlayers = true;
+if (conveniencePlayers){
+  addPlayer("Brandon");
+  addPlayer("Mike");
+  addPlayer("Evan");
+  addPlayer("Enrico");
+  addPlayer("Becca");
+  addPlayer("Frank");
+  addPlayer("Elijah");}
 }
 }
 
