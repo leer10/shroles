@@ -18,14 +18,13 @@ main() {
   print("The Hitler is: ${game.hitler}");
   print("The first player, ${game.PlayerList[0].name}, can see these people:");
   if (game.PlayerList[0].isFascist){
-  game.viewOthers(game.PlayerList[0]).forEach((player) => print("${player.name} as a ${player.roleString}"));}
+  for (var player in game.viewOthers(game.PlayerList[0])) {print("${player.name} as a ${player.roleString}");}}
   else {print("Nobody");}
 }
 
 void printplayersandroles(Game game) {
   print("There are ${game.PlayerList.length} players.");
-  game.PlayerList.forEach(
-      (player) => {print("${player}: ${player.roleString}")});
+  for (var player in game.PlayerList){print("$player: ${player.roleString}");}
 }
 
 void exampleplayers(Game game, int number) {
@@ -135,7 +134,7 @@ class Game {
       }
       assert(PlayerList.length == roleshuffle.length);
       roleshuffle.shuffle();
-      PlayerList.forEach((player) => player.role = roleshuffle.removeLast());
+      for (var player in PlayerList){player.role = roleshuffle.removeLast();}
     } else {
       print("not enough players!");
     }
