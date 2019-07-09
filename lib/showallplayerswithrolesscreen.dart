@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 class ShowPlayersWithRolesScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    Provider.of<GameState>(context).game.isSpoiled = true;
     return Scaffold(
     appBar: AppBar(title:Text("All Players") ,),
     body: Material(
