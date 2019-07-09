@@ -49,7 +49,7 @@ class RoleIntroductionScreen extends StatelessWidget {
                                                   .PlayerList[index]
                                                   .role ==
                                               Role.fascist)
-                                            Text("You're a fascist."),
+                                            Text("You're a Fascist."),
                                           if (Provider.of<GameState>(context)
                                                   .game
                                                   .PlayerList[index]
@@ -60,7 +60,7 @@ class RoleIntroductionScreen extends StatelessWidget {
                                               .game
                                               .PlayerList[index]
                                               .isLiberal)
-                                            Text("You're a liberal."),
+                                            Text("You're a Liberal."),
                                           if (Provider.of<GameState>(context)
                                                   .game
                                                   .viewOthers(
