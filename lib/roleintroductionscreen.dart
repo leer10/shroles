@@ -10,16 +10,20 @@ class RoleIntroductionScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text("Player Introduction"),
         ),
-        body: GridView.builder(
-            itemCount: Provider.of<GameState>(context).game.PlayerList.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _PlayerButton(player: Provider.of<GameState>(context).game.PlayerList[index]),
-              );
-            }));
+        body: OrientationBuilder(
+          builder: (context, orientation) {
+            return GridView.builder(
+                itemCount: Provider.of<GameState>(context).game.PlayerList.length,
+                gridDelegate:
+                    (orientation == Orientation.portrait) ? SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2) : SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: _PlayerButton(player: Provider.of<GameState>(context).game.PlayerList[index]),
+                  );
+                });
+          }
+        ));
   }
 }
 
