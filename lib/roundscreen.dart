@@ -30,18 +30,11 @@ class RoundScreen extends StatelessWidget {
                         }
                       : null);
             }),
-            Builder(builder: (BuildContext context) {
-              return RaisedButton(
+            RaisedButton(
                   child: Text("Show all Players with Roles"),
                   onPressed: (Provider.of<GameState>(context).introduced)
-                      ? () {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text("Not implemented yet"),
-                            duration: Duration(seconds: 2),
-                          ));
-                        }
-                      : null);
-            }),
+                      ? () {Navigator.pushNamed(context, '/roundscreen/allplayers');}
+                      : null),
           ],
         )));
   }
