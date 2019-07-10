@@ -39,7 +39,7 @@ class LoyaltyCheckScreen extends StatelessWidget {
                                       builder: (BuildContext context) {
                                         return AlertDialog(
                                             title: Text(
-                                                "${Provider.of<GameState>(context).game.PlayerList[index].name}'s Loyalty:"),
+                                                "${Provider.of<GameState>(context).game.PlayerList[index].name}'s Loyalty"),
                                             content: SingleChildScrollView(
                                                 child: ListBody(children: <Widget>[
                                               if (Provider.of<GameState>(context)
