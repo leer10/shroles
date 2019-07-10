@@ -97,7 +97,7 @@ class _PlayerButtonState extends State<_PlayerButton> {
                 }
 
                 await _presentRole();
-                setState((){Provider.of<GameState>(context).introducePlayer(
+                setState((){Provider.of<GameState>(context, listen:false).introducePlayer(
                     widget.player);
                   isAvailable = false;});
                 if (Provider.of<GameState>(context).introduced == true) {
