@@ -101,7 +101,7 @@ class _PlayerButtonState extends State<_PlayerButton> {
                       content: Text("Everyone's in!"),
                       backgroundColor: Colors.green,
                       action: SnackBarAction(
-                          label: "Back to the Menu", //textColor: Colors.white,
+                          label: "Back to the Menu", textColor: Colors.white,
                           onPressed: () {
                             Navigator.popUntil(
                                 context, ModalRoute.withName("/roundscreen"));
