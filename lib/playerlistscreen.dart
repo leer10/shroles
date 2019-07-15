@@ -86,7 +86,7 @@ class PlayerNumberWidget extends StatelessWidget {
                     builder: (BuildContext context) {
                       return AlertDialog(
                           title: Text("Balance"),
-                          content: Text("There are 6 players in the game. Do you want to add a balancing player role called Radical Centrist?"),
+                          content: Text("There are 6 players in the game. Do you want to add a balancing player role called Radical Centrist? Alternatively, you can keep the player roles vanilla and find another way to balance."),
                           actions: <Widget>[
                             FlatButton(
                                 child: Text('Vanilla'),
