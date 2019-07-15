@@ -3,7 +3,7 @@ main() {
   //game.addPlayer("Bob", Role.liberal);
   //game.PlayerList[0].role = "Liberal";
   //print(game.PlayerList.last.role.toString());
-  exampleplayers(game, 5);
+  exampleplayers(game, 7);
   game.assignroles();
   print("Is the first player fascist? ${game.PlayerList[0].isFascist}");
   print("Is Brandon in the game? ${game.containsPlayer("Brandon")}");
@@ -17,8 +17,8 @@ main() {
   printplayersandroles(game);
   print("The Hitler is: ${game.hitler}");
   print("The first player, ${game.PlayerList[0].name} (${game.PlayerList[0].roleString}), can see these people:");
-  if (game.PlayerList[0].isFascist){
-  for (var player in game.viewOthers(game.PlayerList[0])) {print("${player.name} as a ${player.roleString}");}}
+  if (game.viewOthers(game.PlayerList[0]).isNotEmpty){
+  for (var player in game.viewOthers(game.PlayerList[0]).entries) {print("${player.key.name} as a ${player.value}");}}
   else {print("Nobody");}
 }
 
@@ -55,10 +55,12 @@ class Game {
     return PlayerList.where((player) => player.isLiberal == true).toList();
   }
 
-  List<Player> viewOthers (Player player) {
-    List<Player> _viewList;
+  Map<Player, String> viewOthers (Player player) {
+    Map<Player, String> _viewList = {};
     if (player.isFascist) {
-      _viewList = FascistList.where((_aPlayer) => _aPlayer != player).toList();
+      for (var fascist in FascistList.where((_aPlayer) => _aPlayer != player)) {
+        _viewList[fascist] = fascist.roleString;
+      }
       if (okayToKnowHitler == false){
         //_viewList.removeWhere((player) => player.role == Role.hitler); //haha
         // misunderstood the mechanics
