@@ -50,6 +50,7 @@ class Game {
   List<Player> PlayerList = [];
   bool isSpoiled = false;
   bool okayToKnowHitler;
+  bool radicalCentristExists = false;
   List<Player> get LiberalList {
     return PlayerList.where((player) => player.isLiberal == true).toList();
   }
@@ -141,7 +142,7 @@ class Game {
   }
 }
 
-enum Role { liberal, fascist, hitler }
+enum Role { liberal, fascist, hitler, radicalcentrist }
 
 class Player {
   String name;
@@ -159,6 +160,7 @@ class Player {
       case Role.hitler:
         return true;
       case Role.liberal:
+      case Role.radicalcentrist:
         return false;
     }
   }
@@ -171,6 +173,8 @@ class Player {
         return "Hitler";
       case Role.liberal:
         return "Liberal";
+      case Role.radicalcentrist:
+        return "Radical Centrist";
     }
   }
 
