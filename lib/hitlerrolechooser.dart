@@ -3,7 +3,7 @@ main() {
   //game.addPlayer("Bob", Role.liberal);
   //game.PlayerList[0].role = "Liberal";
   //print(game.PlayerList.last.role.toString());
-  exampleplayers(game, 7);
+  exampleplayers(game, 6);
   game.assignroles();
   print("Is the first player fascist? ${game.PlayerList[0].isFascist}");
   print("Is Brandon in the game? ${game.containsPlayer("Brandon")}");
@@ -16,6 +16,9 @@ main() {
   print(game.FascistList);
   printplayersandroles(game);
   print("The Hitler is: ${game.hitler}");
+  //for (var player in game.PlayerList) {
+  //  print("Is $player marked? ${player.marked}");
+  //}
   print("The first player, ${game.PlayerList[0].name} (${game.PlayerList[0].roleString}), can see these people:");
   if (game.viewOthers(game.PlayerList[0]).isNotEmpty){
   for (var player in game.viewOthers(game.PlayerList[0]).entries) {print("${player.key.name} as a ${player.value}");}}
@@ -24,7 +27,7 @@ main() {
 
 void printplayersandroles(Game game) {
   print("There are ${game.PlayerList.length} players.");
-  for (var player in game.PlayerList){print("$player: ${player.roleString}");}
+  for (var player in game.PlayerList){print("$player: ${player.roleString}${(player.marked) ? " MARKED" : ""}");}
 }
 
 void exampleplayers(Game game, int number) {
@@ -50,7 +53,7 @@ class Game {
   List<Player> PlayerList = [];
   bool isSpoiled = false;
   bool okayToKnowHitler;
-  bool radicalCentristExists = false;
+  bool radicalCentristExists = true;
   List<Player> get LiberalList {
     return PlayerList.where((player) => player.isLiberal == true).toList();
   }
@@ -67,6 +70,12 @@ class Game {
         if (player.role == Role.hitler){
           _viewList.clear();
         }
+      }
+    }
+    if (player.role == Role.radicalcentrist) {
+      print(PlayerList.where((_aPlayer1) => _aPlayer1.marked == true));
+      for (var _aPlayer in PlayerList.where((_aPlayer1) => _aPlayer1.marked == true)){
+        _viewList[_aPlayer] = "player on one of the sides";
       }
     }
     return _viewList;
@@ -126,6 +135,10 @@ class Game {
       }
       if (PlayerList.length <= 6) {
         okayToKnowHitler = true;
+        if ((PlayerList.length == 6) && radicalCentristExists){
+          roleshuffle.remove(Role.liberal);
+          roleshuffle.add(Role.radicalcentrist);
+        }
       } else {
         okayToKnowHitler = false;
       }
@@ -135,9 +148,19 @@ class Game {
       if (PlayerList.length >= 9) {
         roleshuffle.add(Role.fascist);
       }
+
       assert(PlayerList.length == roleshuffle.length);
       roleshuffle.shuffle();
       for (var player in PlayerList){player.role = roleshuffle.removeLast();}
+      if ((PlayerList.length == 6) && radicalCentristExists) {
+        List<Player>_randomLiberalList = LiberalList.toList();
+        _randomLiberalList.shuffle();
+        Player _markedLiberal =_randomLiberalList.first;
+        _markedLiberal.marked = true;
+        //print(_markedLiberal.name + " is a marked liberal");
+        PlayerList.firstWhere((_aPlayer) => _aPlayer.role == Role.fascist).marked = true;
+        //print(PlayerList.firstWhere((_aPlayer) => _aPlayer.marked).name + " is a marked fascist");
+      }
     } else {
       print("not enough players!");
     }
@@ -151,10 +174,12 @@ class Player {
   Role role;
   bool spoiled;
   bool isDead;
+  bool marked;
   Player(String name, [Role role]) {
     this.name = name;
     this.role = role;
     this.spoiled = false;
+    this.marked = false;
   }
   bool get isFascist {
     switch (this.role) {
