@@ -76,8 +76,34 @@ class PlayerNumberWidget extends StatelessWidget {
       return Card(
         color: Colors.green,
         child: InkWell(
-            onTap: () {
+            onTap: () async {
               //print("pressed!");
+              if (Provider.of<GameState>(context).game.PlayerList.length == 6) {
+                Future<void> _askIfWantMod() async {
+                return showDialog<void>(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                          title: Text("Balance"),
+                          content: Text("There are 6 players in the game. Do you want to add a balancing player role called Radical Centrist?"),
+                          actions: <Widget>[
+                            FlatButton(
+                                child: Text('Vanilla'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                }),
+                                FlatButton(
+                                    child: Text('Add Role'),
+                                    onPressed: () {
+                                      Provider.of<GameState>(context).game.radicalCentristExists = true;
+                                      Navigator.of(context).pop();
+                                    })
+                          ]);
+                    });
+              }
+
+              await _askIfWantMod();}
               Provider.of<GameState>(context).game.assignroles();
               Navigator.pushNamedAndRemoveUntil(context, '/roundscreen', (_) => false);
             },
