@@ -63,22 +63,16 @@ class _PlayerButtonState extends State<_PlayerButton> {
                             title: Text("${widget.player.name}"),
                             content: SingleChildScrollView(
                                 child: ListBody(children: <Widget>[
-                              if (widget.player.role == Role.fascist)
-                                Text("You're a Fascist."),
-                              if (widget.player.role == Role.hitler)
-                                Text("You're Hitler."),
-                              if (widget.player.isLiberal)
-                                Text("You're a Liberal."),
+                              Text("You're a ${widget.player.roleString}."),
                               if (Provider.of<GameState>(context)
                                       .game
-                                      .viewOthers(widget.player) !=
-                                  null)
-                                for (Player player
+                                      .viewOthers(widget.player).isNotEmpty)
+                                for (var player
                                     in Provider.of<GameState>(context)
                                         .game
-                                        .viewOthers(widget.player))
+                                        .viewOthers(widget.player).entries)
                                   Text(
-                                      "${player.name} is ${player.roleString}.")
+                                      "${player.key.name} is a ${player.value}.")
                             ])),
                             actions: <Widget>[
                               FlatButton(

@@ -15,8 +15,21 @@ class ShowPlayersWithRolesScreen extends StatelessWidget{
         itemCount: Provider.of<GameState>(context).game.PlayerList.length,
         separatorBuilder:(context, index) => Divider(),
         itemBuilder: (context, index) {
-          return ListTile(title:Text(Provider.of<GameState>(context).game.PlayerList[index].name),
-        trailing: RoleLabel(role: Provider.of<GameState>(context).game.PlayerList[index].role),);
+          Player currentPlayer = Provider.of<GameState>(context).game.PlayerList[index];
+          return ListTile(title:Text(currentPlayer.name),
+        trailing: Container(
+          width: 200,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              if (currentPlayer.marked) Icon(Icons.visibility),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RoleLabel(role: currentPlayer.role),
+              ),
+            ],
+          ),
+        ), );
         }
       )
     ),
@@ -35,6 +48,12 @@ class RoleLabel extends StatelessWidget{
         padding: const EdgeInsets.all(4.0),
         child: Text("Liberal"),
       ), color: Colors.blue,);
+    }
+    else if (role == Role.radicalcentrist){
+      return Container(child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Text("Radical Centrist"),
+      ), color: Colors.purple,);
     }
     else if (role == Role.fascist){
       return Container(child: Padding(
