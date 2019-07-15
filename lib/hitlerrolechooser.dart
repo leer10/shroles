@@ -4,6 +4,7 @@ main() {
   //game.PlayerList[0].role = "Liberal";
   //print(game.PlayerList.last.role.toString());
   exampleplayers(game, 6);
+  game.radicalCentristExists = true; // set to true to allow radical centrists in 6 player games
   game.assignroles();
   print("Is the first player fascist? ${game.PlayerList[0].isFascist}");
   print("Is Brandon in the game? ${game.containsPlayer("Brandon")}");
@@ -53,7 +54,7 @@ class Game {
   List<Player> PlayerList = [];
   bool isSpoiled = false;
   bool okayToKnowHitler;
-  bool radicalCentristExists = true;
+  bool radicalCentristExists = false;
   List<Player> get LiberalList {
     return PlayerList.where((player) => player.isLiberal == true).toList();
   }
