@@ -18,7 +18,7 @@ class ShowPlayersWithRolesScreen extends StatelessWidget{
           Player currentPlayer = Provider.of<GameState>(context).game.PlayerList[index];
           return ListTile(title:Text(currentPlayer.name),
         trailing: Container(
-          width: 200,
+          width: 130,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
