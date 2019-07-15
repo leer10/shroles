@@ -207,7 +207,14 @@ class Player {
   }
 
   bool get isLiberal {
-    return !this.isFascist;
+    switch (this.role) {
+      case Role.fascist:
+      case Role.hitler:
+      case Role.radicalcentrist:
+        return false;
+      case Role.liberal:
+        return true;
+    }
   }
 
   @override
