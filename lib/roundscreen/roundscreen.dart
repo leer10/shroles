@@ -40,7 +40,16 @@ class RoundScreen extends StatelessWidget {
                   onPressed: (Provider.of<GameState>(context).introduced)
                       ? () {Navigator.pushNamed(context, '/roundscreen/allplayers');}
                       : null),
-          ],
+          Divider(),
+          RaisedButton(
+            child: Text("Role Descriptions"),
+            padding: EdgeInsets.all(14),
+          ),
+          RaisedButton(
+            child: Text("Game Setup Tips"),
+            padding: EdgeInsets.all(14),
+          )
+        ],
         )));
   }
 }

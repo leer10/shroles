@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hitlerrolechooserflutter/hitlerrolechooser.dart';
 import 'package:provider/provider.dart';
-import 'package:hitlerrolechooserflutter/addplayerscreen.dart';
-import 'package:hitlerrolechooserflutter/playerlistscreen.dart';
-import 'package:hitlerrolechooserflutter/roleintroductionscreen.dart';
-import 'package:hitlerrolechooserflutter/roundscreen.dart';
-import 'package:hitlerrolechooserflutter/showallplayerswithrolesscreen.dart';
-import 'package:hitlerrolechooserflutter/loyaltycheck.dart';
+import 'package:hitlerrolechooserflutter/playerlist/addplayerscreen.dart';
+import 'package:hitlerrolechooserflutter/playerlist/playerlistscreen.dart';
+import 'package:hitlerrolechooserflutter/roundscreen/roleintroductionscreen.dart';
+import 'package:hitlerrolechooserflutter/roundscreen/roundscreen.dart';
+import 'package:hitlerrolechooserflutter/roundscreen/showallplayerswithrolesscreen.dart';
+import 'package:hitlerrolechooserflutter/roundscreen/loyaltycheck.dart';
 
 void main() => runApp(ChangeNotifierProvider(builder: (context) => GameState(), child: MyApp()));
 
