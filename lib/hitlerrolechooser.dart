@@ -16,7 +16,7 @@ main() {
   print(game.FascistList);
   printplayersandroles(game);
   print("The Hitler is: ${game.hitler}");
-  print("The first player, ${game.PlayerList[0].name}, can see these people:");
+  print("The first player, ${game.PlayerList[0].name} (${game.PlayerList[0].roleString}), can see these people:");
   if (game.PlayerList[0].isFascist){
   for (var player in game.viewOthers(game.PlayerList[0])) {print("${player.name} as a ${player.roleString}");}}
   else {print("Nobody");}
