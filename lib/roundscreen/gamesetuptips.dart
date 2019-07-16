@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:hitlerrolechooserflutter/main.dart';
 import 'package:provider/provider.dart';
 
