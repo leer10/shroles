@@ -104,8 +104,10 @@ class RoleInfoWidget extends StatelessWidget {
         ),
         //if (roleinfo.tips != null)
         //Text("Tips", style:TextStyle(fontSize: 20)),
-        if (roleinfo.tips != null)
-        Divider(indent:24 ,endIndent: 24, ),
+        if (roleinfo.tips != null) if (!kIsWeb)
+        Divider(indent:24 , endIndent: 24, ),
+        if (roleinfo.tips != null)if (kIsWeb)
+        Divider(indent:24 , endIndent: 24, ),
         if (roleinfo.tips != null)
         for (String tip in roleinfo.tips)  Padding(child: Text(tip, textAlign: TextAlign.center ,), padding: const EdgeInsets.all(4))
       ],
