@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hitler Role Chooser',
+      title: 'Secret Hitler Role Chooser',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -94,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
         title: Text('Welcome'), actions: <Widget>[IconButton(
           icon: Icon(Icons.help),
           tooltip: "Show About Dialog",
-          onPressed: (){showAboutDialog(context: context);},
+          onPressed: (){showAboutDialog(context: context, applicationName: "Secret Hitler Role Chooser", applicationIcon: Image.asset("assets/icon/icon.png", width: 60, height: 60), applicationLegalese: "Created by Brandon Abbott\nIcon by Enrico Mazzon");},
         )],
       ),
       body: Center(
