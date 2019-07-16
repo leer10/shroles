@@ -1,20 +1,21 @@
 {
-    "name": "SH Role Chooser",
+    "name": "Secret Hitler Role Chooser",
     "short_name": "SH Role Chooser",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "/android-chrome-192x192.png?v=pge6aPK2W4",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-384x384.png",
-            "sizes": "384x384",
+            "src": "/android-chrome-512x512.png?v=pge6aPK2W4",
+            "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#721617",
+    "background_color": "#721617",
     "start_url": "/",
-    "display": "standalone"
+    "display": "standalone",
+    "orientation": "portrait"
 }
