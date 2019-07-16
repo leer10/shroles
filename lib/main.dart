@@ -12,6 +12,8 @@ import 'package:hitlerrolechooserflutter/roundscreen/gamesetuptips.dart';
 
 void main() => runApp(ChangeNotifierProvider(builder: (context) => GameState(), child: MyApp()));
 
+const bool kIsWeb = identical(0, 0.0);
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
