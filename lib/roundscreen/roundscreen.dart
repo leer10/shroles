@@ -50,7 +50,7 @@ class RoundScreen extends StatelessWidget {
             child: Text("Game Setup Tips"),
             padding: EdgeInsets.all(14),
             onPressed: (){Navigator.pushNamed(context, '/roundscreen/gamesetuptips');},
-          )
+          ),
         ],
         )));
   }

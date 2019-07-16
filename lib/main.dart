@@ -91,6 +91,7 @@ class WelcomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Welcome'), actions: <Widget>[IconButton(
           icon: Icon(Icons.help),
+          tooltip: "Show About Dialog",
           onPressed: (){showAboutDialog(context: context);},
         )],
       ),
@@ -105,10 +106,21 @@ class WelcomeScreen extends StatelessWidget {
               Text("This app will help you set up roles for a 5 to 10 player game of Secret Hitler.", textAlign: TextAlign.center),
               RaisedButton(
                 child: Text('START GAME'),
+                padding: EdgeInsets.all(14),
                 onPressed: () {
                   // Navigate to the second screen when tapped.
                   Navigator.pushNamed(context, '/playerlist');
                 },
+              ),
+              RaisedButton(
+                child: Text("Role Descriptions"),
+                padding: EdgeInsets.all(14),
+                onPressed: (){Navigator.pushNamed(context, '/roundscreen/roledescriptions');},
+              ),
+              RaisedButton(
+                child: Text("Game Setup Tips"),
+                padding: EdgeInsets.all(14),
+                onPressed: (){Navigator.pushNamed(context, '/roundscreen/gamesetuptips');},
               ),
             ],
           ),

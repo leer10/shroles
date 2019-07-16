@@ -13,6 +13,7 @@ class PlayerListScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/playerlist/addplayer');
         },
+        tooltip: "Add a player",
         child: Icon(Icons.add),
         //backgroundColor: Colors.redAccent,
       ),
