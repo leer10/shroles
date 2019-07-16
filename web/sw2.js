@@ -22,6 +22,7 @@ self.addEventListener('install', e => {
 '/safari-pinned-tab.svg',
 '/assets/FontManifest.json',
 '/assets/fonts/MaterialIcons-Regular.ttf',
+'/assets/assets/icon/icon.png',
      ]);
    })
  );
