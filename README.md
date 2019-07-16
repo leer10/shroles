@@ -1,6 +1,6 @@
-# hitlerrolechooserflutter
+# Secret Hitler Role Chooser
 
-A new Flutter project.
+This is an app that helps someone set up a round of Secret Hitler with nothing but a phone. No role cards needed!
 
 ## Getting Started
 
