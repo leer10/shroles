@@ -87,9 +87,9 @@ class InfoCard extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(title, textAlign:TextAlign.center , style: TextStyle(fontSize: 24),),
-            if (!kIsWeb)
-            Divider(indent:25, endIndent: 25,),
-            if (kIsWeb)
+            //if (!kIsWeb)
+            //Divider(indent:25, endIndent: 25,),
+            //if (kIsWeb) // eventually use above code when endIndent is supported by flutter_web
             Divider(),
             if (info != null)
             for (String infobite in info)

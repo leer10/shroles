@@ -94,12 +94,12 @@ class _PlayerButtonState extends State<_PlayerButton> {
                   Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text("Everyone's in!"),
                       backgroundColor: Colors.green,
-                      action: (!kIsWeb) ? SnackBarAction(
-                          label: "Back to the Menu", textColor: Colors.white,
-                          onPressed: () {
-                            Navigator.popUntil(
-                                context, ModalRoute.withName("/roundscreen"));
-                          }) : null
+                    //  action: (!kIsWeb) ? SnackBarAction(
+                    //      label: "Back to the Menu", textColor: Colors.white,
+                    //      onPressed: () {
+                    //        Navigator.popUntil(
+                    //            context, ModalRoute.withName("/roundscreen"));
+                    //      }) : null // eventually use this code when textColor is supported by flutter_web
                         ));
                 }
               }
