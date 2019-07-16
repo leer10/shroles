@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hitlerrolechooserflutter/hitlerrolechooser.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart' as Foundation;
 import 'package:hitlerrolechooserflutter/playerlist/addplayerscreen.dart';
 import 'package:hitlerrolechooserflutter/playerlist/playerlistscreen.dart';
 import 'package:hitlerrolechooserflutter/roundscreen/roleintroductionscreen.dart';
@@ -74,8 +75,7 @@ void introducePlayer(Player player){
 }
 
 GameState(){
-const conveniencePlayers = true;
-if (conveniencePlayers){
+if (Foundation.kDebugMode){
   addPlayer("Brandon");
   addPlayer("Mike");
   addPlayer("Evan");
