@@ -44,10 +44,12 @@ class RoundScreen extends StatelessWidget {
           RaisedButton(
             child: Text("Role Descriptions"),
             padding: EdgeInsets.all(14),
+            onPressed: (){Navigator.pushNamed(context, '/roundscreen/roledescriptions');},
           ),
           RaisedButton(
             child: Text("Game Setup Tips"),
             padding: EdgeInsets.all(14),
+            onPressed: (){Navigator.pushNamed(context, '/roundscreen/gamesetuptips');},
           )
         ],
         )));

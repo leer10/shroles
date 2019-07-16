@@ -38,7 +38,7 @@ class ShowPlayersWithRolesScreen extends StatelessWidget{
 }
 
 class RoleLabel extends StatelessWidget{
-  RoleLabel({this.role});
+  RoleLabel({@required this.role});
   final Role role;
 
   @override
