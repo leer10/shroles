@@ -31,22 +31,74 @@ class GameSetupContent extends StatelessWidget{
       InfoCard(
         title: "Liberal Track",
         info: [
-          "This is where you put the enacted Liberal Policies.",
-          "There should be six spaces: 2 rows and 3 columns.",
-          "All spaces should be empty except for the last, which is the Liberal Win space.",
+          "Liberals win when they fill all their spaces, or if they kill Hitler.",
+          "Hint: there are as many liberal cards in the deck as there are spaces in the track.",
           "If you have experienced players, you may choose to use your 🌈imagination🌈."
-        ]
+        ],
+        trailing: [
+          TrackWidget(
+            row1: [
+              PolicySpace(color: Colors.blue,),
+              PolicySpace(color: Colors.blue,),
+              PolicySpace(color: Colors.blue,),
+            ],
+            row2: [
+              PolicySpace(color: Colors.blue,),
+              PolicySpace(color: Colors.blue,),
+              PolicySpace(color: Colors.blue, text: "Liberals Win"),
+            ],
+          ),
+        ],
       ),
       InfoCard(
         title: "Fascist Track",
         info: [
-          "Same as above, but for fascist policies.",
-          "Whilst there are six total spaces, there are different setups depending on the players:",
-          "5-6 Players: Blank, Blank, Policy Peek, Kill, Kill (Veto Unlock), Fascist Win",
-          "7-8 Players: Blank, Loyalty Check, President selects next Presidential Candidate, Kill, Kill (Veto Unlock), Fascist Win",
-          "9-10 Players: Loyalty Check, Loyalty Check, President selects next Presidential Candidate, Kill, Kill (Veto Unlock), Fascist Win",
+          "Fascists must fill the track in order to win, OR make Hitler an elected chancellor after 3 facsist cards have been played.",
+          "When a fascist card is played, it is the President's responsibility to enact the policy. It must be followed.",
+          "An alternative to 6 player balancing is to place a fascist card at the beginning of the game",
           "If you have experienced players, you may choose to use your 🌈imagination🌈."
-        ]
+        ],
+        trailing: [
+          TrackWidget(
+            title: "5-6 Players",
+            row1: [
+              PolicySpace(color: Colors.red,),
+              PolicySpace(color: Colors.red,),
+              PolicySpace(color: Colors.red, text: "Policy Peek"),
+            ],
+            row2: [
+              PolicySpace(color: Colors.red, text: "Kill a player"),
+              PolicySpace(color: Colors.red, text: "Kill a player\n\nVeto Unlocked"),
+              PolicySpace(text: "Fascists Win", color: Colors.red),
+            ]
+          ),
+          TrackWidget(
+            title: "7-8 Players",
+            row1: [
+              PolicySpace(color: Colors.red,),
+              PolicySpace(color: Colors.red, text: "Loyalty Check"),
+              PolicySpace(color: Colors.red, text: "President picks next candidate"),
+            ],
+            row2: [
+              PolicySpace(color: Colors.red, text: "Kill a player"),
+              PolicySpace(color: Colors.red, text: "Kill a player\n\nVeto Unlocked"),
+              PolicySpace(text: "Fascists Win", color: Colors.red),
+            ]
+          ),
+          TrackWidget(
+            title: "9-10 Players",
+            row1: [
+              PolicySpace(color: Colors.red, text: "Loyalty Check"),
+              PolicySpace(color: Colors.red, text: "Loyalty Check"),
+              PolicySpace(color: Colors.red, text: "President picks next candidate"),
+            ],
+            row2: [
+              PolicySpace(color: Colors.red, text: "Kill a player"),
+              PolicySpace(color: Colors.red, text: "Kill a player\n\nVeto Unlocked"),
+              PolicySpace(text: "Fascists Win", color: Colors.red),
+            ]
+          ),
+        ],
       ),
       InfoCard(
         title: "Voting",
@@ -73,10 +125,68 @@ class GameSetupContent extends StatelessWidget{
   }
 }
 
+class TrackWidget extends StatelessWidget{
+  final String title;
+  final List<Widget> row1;
+  final List<Widget> row2;
+  final Color color;
+  TrackWidget({this.title, @required this.row1, @required this.row2, this.color});
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
+          if (title != null)
+          Text(title, textAlign:TextAlign.center , style: TextStyle(fontSize: 18),),
+          Table(
+            defaultColumnWidth: FixedColumnWidth(75),
+            children: [
+              TableRow(
+                children: row1
+              ),
+              TableRow(
+                children: row2
+              ),
+            ]
+          ),
+        ],
+      ),
+    );
+  }
+
+}
+
+class PolicySpace extends StatelessWidget{
+  final Color color;
+  final Widget child;
+  final String text;
+  PolicySpace({this.color, this.child, this.text});
+  @override
+  Widget build(BuildContext context) {
+    Widget content;
+    if ((child != null) && (text != null)){
+      content = Column(children: [child, Text(text, textAlign: TextAlign.center,)]);
+    }
+    else if (child != null) {
+      content = child;
+    } else if (text != null) {
+      content = Text(text, textAlign: TextAlign.center,);
+    } else {content = null;}
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(height: 100, child: Center(child: content), color: color ?? Colors.grey),
+    );
+  }
+
+}
+
 class InfoCard extends StatelessWidget {
   final String title;
   final List<String> info;
-  InfoCard({@required this.title, this.info});
+  final List<Widget> trailing;
+  InfoCard({@required this.title, this.info, this.trailing});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -99,6 +209,8 @@ class InfoCard extends StatelessWidget {
                 textAlign:TextAlign.justify,
                ),
             ),
+            if (trailing != null)
+            ...trailing,
           ],
         ),
       )),
