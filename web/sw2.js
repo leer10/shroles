@@ -3,7 +3,7 @@ self.addEventListener('install', e => {
  e.waitUntil(
    // after the service worker is installed,
    // open a new cache
-   caches.open('v2').then(cache => {
+   caches.open('v2.1').then(cache => {
      // add all URLs of resources we want to cache
      return cache.addAll([
        '/',
@@ -30,7 +30,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', function(event) {
   console.log('activate');
-  var cacheKeeplist = ['v2'];
+  var cacheKeeplist = ['v2.1'];
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
