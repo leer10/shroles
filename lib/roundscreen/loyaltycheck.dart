@@ -26,7 +26,7 @@ class LoyaltyCheckScreen extends StatelessWidget {
                               .name,
                           style: TextStyle(fontSize: 32),
                           textAlign: TextAlign.center,
-                          overflow: TextOverflow.fade,
+                          overflow: TextOverflow.ellipsis, // also fade broken by flutter_web
                         ),
                         onPressed: () async {
                                 print("added");
