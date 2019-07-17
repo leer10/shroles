@@ -48,7 +48,7 @@ class _PlayerButtonState extends State<_PlayerButton> {
           widget.player.name,
           style: TextStyle(fontSize: 32),
           textAlign: TextAlign.center,
-          overflow: TextOverflow.fade,
+          overflow: TextOverflow.ellipsis, //not fade because that's broken by flutter_web
         ),
         onPressed: (!widget.player.spoiled)
             ? () async {
