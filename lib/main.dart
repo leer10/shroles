@@ -94,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
         title: Text('Welcome'), actions: <Widget>[IconButton(
           icon: Icon(Icons.help),
           tooltip: "Show About Dialog",
-          onPressed: (){showAboutDialog(context: context, applicationName: "Secret Hitler Role Chooser", applicationIcon: Image.asset("assets/icon/icon.png", width: 60, height: 60), applicationLegalese: "Created by Brandon Abbott\nIcon by Enrico Mazzon", applicationVersion: "Android/iOS 0.2\nView source code at https://github.com/leer10/shroles");},
+          onPressed: (){showAboutDialog(context: context, applicationName: "Secret Hitler Role Chooser", applicationIcon: Image.asset("assets/icon/icon.png", width: 60, height: 60), applicationLegalese: "Created by Brandon Abbott\nIcon is a derivative of an icon made by Freepik from Freeicon.com by Enrico Mazzon\nSecret Hitler is a creation of Goat, Wolf, and Cabbage licensed under CC BY-NA-SA 4.0\nThis application is licensed under GPLv3 with Creative Commons as a Section 14 proxy", applicationVersion: "Android/iOS 0.2\nView source code at https://github.com/leer10/shroles");},
         )],
       ),
       body: Center(
