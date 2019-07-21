@@ -3,18 +3,18 @@ self.addEventListener('install', e => {
  e.waitUntil(
    // after the service worker is installed,
    // open a new cache
-   caches.open('v2.1').then(cache => {
+   caches.open('v3').then(cache => {
      // add all URLs of resources we want to cache
      return cache.addAll([
        '/',
 '/main.dart.js',
 '/index.html',
-'/site.webmanifest?v=pge6aPK2W4',
-'/favicon.ico?v=pge6aPK2W4',
-'/favicon-32x32.png?v=pge6aPK2W4',
-'/favicon-16x16.png?v=pge6aPK2W4',
-'/android-chrome-192x192.png?v=pge6aPK2W4',
-'/android-chrome-512x512.png?v=pge6aPK2W4',
+'/site.webmanifest?v=RyQRLWWell',
+'/favicon.ico?v=RyQRLWWell',
+'/favicon-32x32.png?v=RyQRLWWell',
+'/favicon-16x16.png?v=RyQRLWWell',
+'/android-chrome-192x192.png?v=RyQRLWWell',
+'/android-chrome-512x512.png?v=RyQRLWWell',
 '/apple-touch-icon.png',
 '/browserconfig.xml',
 '/favicon.ico',
@@ -30,7 +30,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', function(event) {
   console.log('activate');
-  var cacheKeeplist = ['v2.1'];
+  var cacheKeeplist = ['v3'];
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
