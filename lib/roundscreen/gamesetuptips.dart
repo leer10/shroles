@@ -22,10 +22,17 @@ class GameSetupContent extends StatelessWidget{
         child: Text("For the MacGyvering Fascist in you.", textAlign: TextAlign.center, style:TextStyle(fontSize: 16, fontStyle: FontStyle.italic),),
       ),
       InfoCard(
+        title: "Note",
+        info : [
+          "Please buy the official Secret Hitler game if you can to support the creators",
+          "If you cannot, you can also use their official Print and Play PDFs on their website",
+          "At worst, use the info below to help you set up an impromptu version"
+        ]
+      ),
+      InfoCard(
         title: "Policy Cards",
         info: [
             "For a regular game of Secret Hitler, 6 Liberal cards and 11 Fascist cards are needed.",
-            "You may use cards specifically for the game, or just borrow playing cards of two different fronts but the same backs. Uno™ Red and Blue cards work well for this."
         ],
       ),
       InfoCard(
@@ -33,7 +40,6 @@ class GameSetupContent extends StatelessWidget{
         info: [
           "Liberals win when they fill all their spaces, or if they kill Hitler.",
           "Hint: there are as many liberal cards in the deck as there are spaces in the track.",
-          "If you have experienced players, you may choose to use your 🌈imagination🌈."
         ],
         trailing: [
           TrackWidget(
@@ -56,7 +62,6 @@ class GameSetupContent extends StatelessWidget{
           "Fascists must fill the track in order to win, OR make Hitler an elected chancellor after 3 facsist cards have been played.",
           "When a fascist card is played, it is the President's responsibility to enact the policy. It must be followed.",
           "An alternative to 6 player balancing is to place a fascist card at the beginning of the game",
-          "If you have experienced players, you may choose to use your 🌈imagination🌈."
         ],
         trailing: [
           TrackWidget(
@@ -103,22 +108,19 @@ class GameSetupContent extends StatelessWidget{
       InfoCard(
         title: "Voting",
         info: [
-          "Cards with two different fronts but the same back. For example Uno™ yellow (no) and green (yes) cards work well in this case.",
-          "In a pinch, a mass thumbs-up/thumbs-down works to settle the matter."
+          "Ja (Yes) and Nein (No) cards help the entire group make a consensus without taksies-backsies"
         ]
       ),
       InfoCard(
         title: "President and Chancellor Placards",
-        info: ["There needs to be two distinct objects to mark who is the President(ial candidate) and their (would-be) Chancellor.",
-              "You may use either the official placards, or folded pieces of paper labeled \"President\" and \"Chancellor\" or even two different items.",
+        info: ["These mark who is the President(ial candidate) and their (would-be) Chancellor.",
             ]
       ),
       InfoCard(
         title: "Role Cards",
         info: [
           "These aren't really needed in this setting since the app will introduce each player to their role and do the night phase for them.",
-          "Using the offical cards is easiest if you wanna go physical.",
-          "If you really wanna use cards and don't have the official ones, then an Uno™ deck has enough cards for policies, voting cards, and roles."
+          "Players are handed an envelope with two cards. The first one declares their Role, and a second one shows if they're a member of the Fascist or Liberal party."
         ]
       ),
     ]);
